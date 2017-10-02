@@ -1,6 +1,18 @@
 from flask import Flask, render_template
+from flaskext.mysql import MySQL
 
 app = Flask(__name__)
+mysql = MySQL()
+
+app.config['MYSQL_DATABASE_USER'] = ''
+app.config['MYSQL_DATABASE_PASSWORD'] = ''
+app.config['MYSQL_DATABASE_DB'] = 'portfolio'
+app.config['MYSQL_DATABASE_HOST'] = 'treilly.ddns.net'
+
+mysql.init_app(app)
+
+conn = mysql.connect()
+cursor = conn.cursor()
 
 
 @app.route('/')
@@ -10,7 +22,9 @@ def index():
 
 @app.route('/tech')
 def tech():
-    return render_template('tech.html')
+    cursor.callproc('top_tech')
+    results = cursor.fetchall()
+    return render_template('tech.html', top_tech=results)
 
 
 @app.route('/project')
@@ -24,4 +38,4 @@ def exp():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
