@@ -1,11 +1,12 @@
+import os
 from flask import Flask, render_template
 from flaskext.mysql import MySQL
 
 app = Flask(__name__)
 mysql = MySQL()
 
-app.config['MYSQL_DATABASE_USER'] = ''
-app.config['MYSQL_DATABASE_PASSWORD'] = ''
+app.config['MYSQL_DATABASE_USER'] = os.environ.get('PI_USER')
+app.config['MYSQL_DATABASE_PASSWORD'] = os.environ.get('PI_PASS')
 app.config['MYSQL_DATABASE_DB'] = 'portfolio'
 app.config['MYSQL_DATABASE_HOST'] = 'treilly.ddns.net'
 
