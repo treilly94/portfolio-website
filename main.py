@@ -37,7 +37,9 @@ def project():
 
 @app.route('/exp')
 def exp():
-    return render_template('exp.html')
+    cursor.callproc('recent_exp')
+    results = cursor.fetchall()
+    return render_template('exp.html', recent_exp=results)
 
 
 if __name__ == '__main__':
