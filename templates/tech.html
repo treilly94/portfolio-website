@@ -7,7 +7,9 @@
     </head>
     <body>
         <h1>Technologies</h1>
-        <p> {{ top_tech }} </p>
+        {% for tech in top_tech %}
+            <p> {{ tech[0] }} </p>
+        {% endfor %}
 
     </body>
 </html>
