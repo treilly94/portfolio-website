@@ -30,7 +30,9 @@ def tech():
 
 @app.route('/project')
 def project():
-    return render_template('project.html')
+    cursor.callproc('top_projects')
+    results = cursor.fetchall()
+    return render_template('project.html', top_projects=results)
 
 
 @app.route('/exp')
