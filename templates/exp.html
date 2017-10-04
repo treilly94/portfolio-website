@@ -7,8 +7,13 @@
     </head>
     <body>
         <h1>Experiences</h1>
-        {% for exp in recent_exp %}
-            <p>{{ exp[0] }}</p>
-        {% endfor %}
+        <table>
+            {% for exp in recent_exp %}
+                <tr>
+                    <td>{{ exp[0] }}</td>
+                    <td>{{ exp[1] }}</td>
+                </tr>
+            {% endfor %}
+        </table>
     </body>
 </html>
