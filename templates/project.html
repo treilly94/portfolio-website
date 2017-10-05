@@ -6,6 +6,12 @@
         <title>Project</title>
     </head>
     <body>
+        <nav>
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('exp') }}">Exp</a>
+            <a href="{{ url_for('tech') }}">Tech</a>
+            <a href="{{ url_for('project') }}">Projects</a>
+        </nav>
         <h1>Projects</h1>
         {% for project in top_projects %}
             <p>{{ project[0] }}</p>
